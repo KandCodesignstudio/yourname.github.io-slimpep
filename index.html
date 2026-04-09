@@ -597,17 +597,19 @@ input[type=range].signal-range::-webkit-slider-thumb{-webkit-appearance:none;wid
 #cmsApp.active{display:flex;flex-direction:column;min-height:100vh;}
 
 /* ── TOP BAR ── */
-.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;
-  display:flex;align-items:center;justify-content:space-between;height:56px;min-height:56px;
-  flex-shrink:0;position:relative;z-index:100;}
-.topbar-left{display:flex;align-items:center;gap:14px;}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 16px;
+  display:flex;align-items:center;justify-content:space-between;min-height:56px;
+  flex-shrink:0;position:relative;z-index:100;flex-wrap:wrap;gap:8px;}
+.topbar-left{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .topbar-logo{height:32px;width:auto;}
-.topbar-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;}
+.topbar-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;white-space:nowrap;}
 .topbar-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);background:var(--gold-light);border:1px solid rgba(201,160,72,.25);
-  padding:3px 8px;border-radius:4px;}
-.topbar-right{display:flex;align-items:center;gap:12px;}
-.admin-badge{font-size:12px;color:var(--text-muted);}
+  color:#1e1015;background:#ffffff;border:1px solid rgba(201,160,72,.4);
+  padding:3px 10px;border-radius:4px;font-weight:600;white-space:nowrap;}
+.topbar-right{display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;flex:1;justify-content:flex-end;}
+.topbar-right::-webkit-scrollbar{display:none;}
+.admin-badge{font-size:12px;color:var(--text-muted);white-space:nowrap;}
 
 
 
@@ -822,6 +824,7 @@ select option{background:#1e1418;color:var(--text);}
 /* Topbar */
 #cmsAppShell .topbar{background:#1e1418;border-bottom-color:#3a2828;}
 #cmsAppShell .topbar-title{color:#f0e8ea;}
+#cmsAppShell .topbar-badge{background:#ffffff;color:#1e1015;border-color:rgba(255,255,255,.35);font-weight:600;}
 #cmsAppShell .admin-badge{color:#a88090;}
 
 /* Sidebar */
@@ -4644,7 +4647,7 @@ function initCMS() {
     ['apple-mobile-web-app-capable','yes'],
     ['apple-mobile-web-app-status-bar-style','black-translucent'],
     ['apple-mobile-web-app-title','SlimPep'],
-    ['theme-color','#a3204e']
+    ['theme-color','#e04070']
   ];
   meta.forEach(function(m){
     var el=document.createElement('meta');
@@ -4702,7 +4705,7 @@ if(window.location.search.indexOf('admin=1')!==-1){
     var c=document.createElement('canvas');
     c.width=c.height=size;
     var ctx=c.getContext('2d');
-    ctx.fillStyle='#a3204e';
+    ctx.fillStyle='#e04070';
     var r=size*0.22;
     ctx.beginPath();
     ctx.moveTo(r,0);ctx.lineTo(size-r,0);
@@ -4718,7 +4721,7 @@ if(window.location.search.indexOf('admin=1')!==-1){
     var m={name:'SlimPep Protocol',short_name:'SlimPep',
       description:'Premium peptide tracking for your Elite Line protocol.',
       start_url:'./',display:'standalone',orientation:'portrait',
-      background_color:'#f5f2ef',theme_color:'#a3204e',
+      background_color:'#f5f2ef',theme_color:'#e04070',
       categories:['health','fitness'],lang:'en',
       icons:[{src:i192,sizes:'192x192',type:'image/png',purpose:'any maskable'},
              {src:i512,sizes:'512x512',type:'image/png',purpose:'any maskable'}]};
